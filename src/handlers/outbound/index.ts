@@ -1,8 +1,11 @@
 import { Request, Response } from "express";
 import { OutboundScheduler } from "../../services/outboundScheduler";
 import { VapiClient } from "../../services/vapiClient";
+import { JobQueue } from "../../services/jobQueue";
 
-const scheduler = new OutboundScheduler();
+// Create JobQueue instance first
+const jobQueue = new JobQueue();
+const scheduler = new OutboundScheduler(jobQueue);
 const vapiClient = new VapiClient({
   apiKey: process.env.VAPI_API_KEY!,
 });

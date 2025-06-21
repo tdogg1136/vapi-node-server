@@ -1,11 +1,14 @@
 import { OutboundScheduler } from './outboundScheduler';
+import { JobQueue } from './jobQueue';
 
 export class BackgroundProcessor {
   private scheduler: OutboundScheduler;
   private interval: NodeJS.Timeout | null = null;
 
   constructor() {
-    this.scheduler = new OutboundScheduler();
+    // Create JobQueue instance and pass it to OutboundScheduler
+    const jobQueue = new JobQueue();
+    this.scheduler = new OutboundScheduler(jobQueue);
   }
 
   start() {
