@@ -5,7 +5,7 @@ export enum VapiWebhookEnum {
 }
 
 // Add your Vapi tool names here
-export type ToolCallName = "checkOrderStatus";
+export type ToolCallName = "checkOrderStatus" | "searchHubSpotContact" | "getHubSpotContactDetails" | "createHubSpotContact";
 
 interface BaseVapiPayload {
   call: VapiCall;

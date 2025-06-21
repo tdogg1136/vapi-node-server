@@ -1,4 +1,9 @@
 import { checkOrderStatus } from "../tools/checkOrderStatus";
+import { 
+  searchHubSpotContact, 
+  getHubSpotContactDetails, 
+  createHubSpotContact 
+} from "../tools/hubspotTools";
 import { ToolCall } from "../types/vapi.types";
 
 /**
@@ -23,6 +28,18 @@ export const toolCallHandler = async (payload: any) => {
     switch (name) {
       case "checkOrderStatus":
         return await checkOrderStatus({
+          toolCallparameters,
+        });
+      case "searchHubSpotContact":
+        return await searchHubSpotContact({
+          toolCallparameters,
+        });
+      case "getHubSpotContactDetails":
+        return await getHubSpotContactDetails({
+          toolCallparameters,
+        });
+      case "createHubSpotContact":
+        return await createHubSpotContact({
           toolCallparameters,
         });
       default:
